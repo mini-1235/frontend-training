@@ -39,6 +39,9 @@ transition: fade-out
 
 # Review 
 
+<br>
+
+## Review 啥？ 没人给我反馈呜呜呜
 
 
 
@@ -53,12 +56,8 @@ transition: fade-out
 ```js
 let title = document.getElementById("articleTitle");
 let loginBtn = document.getElementsByName("login")[0];
-let callouts = document.getElementsByClassName("callout"); // *
 ```
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+
 ---
 
 ## Javascript 
@@ -75,9 +74,7 @@ const fToC = (temp) => {
   return (temp - 32) * 5/9;
 }
 ```
-<!--
-Here is another comment.
--->
+
 ---
 
 ## JS Objects <=> JSON
@@ -95,17 +92,9 @@ let teachingAssistant = {
    "age": 24
 }
 ```
-- JSON.parse() JSON String => JS Object
-- JSON.stringify() JS Object => JSON String
 
----
-
-# API 
-
-**Definition:** An application programming interface (API) is a set of definitions and protocols for communication through the serialization and de-serialization of objects.
-
-Requests can be `synchronous` or `asynchronous`. 
-![](figures/reqres.png)
+- `JSON.parse()` JSON String => JS Object
+- `JSON.stringify()` JS Object => JSON String
 
 ---
 
@@ -114,6 +103,7 @@ Requests can be `synchronous` or `asynchronous`.
 `then` and `catch` take a *callback function* as an argument.
 
 **Definition:** A *callback function* (sometimes called a *function reference*) is passed into another function as an argument, which is then invoked inside the outer function to complete a routine or action.
+
 ```js
 const name = prompt('Please enter your name.');
 function processUserInput(callback) {
@@ -130,6 +120,7 @@ processUserInput(greeting1);
 processUserInput(greeting2);
 processUserInput((name) => alert("Welcome " + name));
 ```
+
 ---
 
 # Declarative vs Imperative Programming
@@ -137,7 +128,7 @@ The following is imperative...
 
 `for (let obj of arr) { /* stmts */ }`
 
-###
+
 
 The following is declarative...
 
@@ -146,12 +137,12 @@ The following is declarative...
 
 Declarative array functions include `forEach`, `map`, `slice`, `concat`, `filter`, `some`, `every`, and `reduce`.
 
-###
+demo1:  Usage of `map` in array
 
 ---
 
 # Spread Operator 
-Shallow copy!
+浅拷贝
 ```js
 const defs = {
   erf: "a plot of land",
@@ -163,10 +154,78 @@ const newDefs = {
   futz: "waste of time"
 }
 ```
-Shallow Copy? Deep Copy? Reference Copy?
+Shallow Copy? Deep Copy? Reference Copy? 
+
+link to shallow copy: https://developer.mozilla.org/en-US/docs/Glossary/Shallow_copy
 
 ---
 layout: default
+---
+
+
+# API 
+
+**Definition:** An application programming interface (API) is a set of definitions and protocols for communication through the serialization and de-serialization of objects.
+
+Requests can be `synchronous` or `asynchronous`. 
+![](figures/reqres.png)
+
+---
+
+# Synchronous vs Asynchronous
+
+<img style="zoom:70%" src="https://res.cloudinary.com/mayashavin/image/upload/w_665/v1589141070/articles/ES6Promises/Synchronous_explained.png">
+
+---
+
+# Asynchronous 
+<img style="zoom:50%" src="https://res.cloudinary.com/mayashavin/image/upload/w_665/v1589141045/articles/ES6Promises/Untitled_Artwork_2.png">
+Asynchronous means action can start, run in the background without disturbing other activities to proceed, and resume later if needed.
+
+#### Async in JS?
+- does not stop and wait for it to finish 
+- continues to the next operation in the waiting queue and resumes that specific operation later if possible, once the queue is empty.
+---
+
+# Promises
+A promise is a result guarantee for a particular asynchronous operation on its execution. In other words, the related action makes a promise to return a final value, regardless of how long it takes to execute.
+
+Creating a promise 
+```js
+const myPromise = new Promise(executor)
+```
+<img src="https://res.cloudinary.com/mayashavin/image/upload/w_665/v1589141074/articles/ES6Promises/Untitled_Artwork.png" style="zoom:50%;" >
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  const randNum = generateRandom();
+  if (randNum < 5) {
+    resolve(`I'm resolved at ${randNum}`);
+  } else {
+    reject(`I'm rejected at ${randNum}`);
+  }
+});
+```
+
+
+---
+---
+
+# Promise Object 
+<img src="https://res.cloudinary.com/mayashavin/image/upload/w_665/v1589141546/articles/ES6Promises/printOut_promise.gif" style="zoom:48%">
+
+- Fulfilled ✅ - when the operation completed execution without error, meaning the Promise resolves (resolve() triggered).
+- Rejected 🔴 - as the opposite, when there is an error occurred during the operation, meaning when the Promise chooses to reject (reject() triggered).
+- Pending ⏳ - the operation is still in execution and not yet completed/failed.
+
+---
+
+# Promise in Chaining
+- .then() - is called after a Promise resolves (similar to .done() in Ajax).
+- .catch() - is called after a Promise rejects (similar to .fail() in Ajax)
+- .finally() - is always called at the end, regardless the status of a Promise. This method is similar to .always() in Ajax.
+
+![](https://res.cloudinary.com/mayashavin/image/upload/w_665,q_auto,f_auto/v1589141074/articles/ES6Promises/Flow_promise)
 ---
 
 # Table of contents
@@ -187,8 +246,7 @@ transition: slide-up
 - Efficient DOM updating
 - Declarative programming
 
----
-layout: image-right
+
 
 ---
 
@@ -203,6 +261,8 @@ layout: image-right
   </body>
 </html>
 ```
+<br>
+
 ```js
 const name = "<image src='abc.png' onerror='alert(document.cookie)'/>";
 document.getElementById("student").innerHTML = '<h2>' + name + '</h2>'
@@ -219,8 +279,8 @@ Virtual DOM
 
 ## Virtual DOM
 <div>
-<img src="https://almerosteyn.com/css/images/2017-11-15-id24-accessible-react-tips-tools-tricks/React-DOM.png" style="zoom:40%" >
-<img src="https://i0.wp.com/programmingwithmosh.com/wp-content/uploads/2018/11/lnrn_0201.png?ssl=1" style="zoom:30%" >
+<img align="left" src="https://almerosteyn.com/css/images/2017-11-15-id24-accessible-react-tips-tools-tricks/React-DOM.png" style="zoom:40%; " >
+<img src="https://i0.wp.com/programmingwithmosh.com/wp-content/uploads/2018/11/lnrn_0201.png?ssl=1" style="zoom:30%; margin-top:100px;" >
 </div>
 
 
@@ -240,18 +300,11 @@ npm start
 
 - Every component is a function, inheriting `props` and maintaining an internal `state`.
 
-A component will re-render when...
-
-
+- A component will re-render when...
 
   1. its `props` changes
   2. its `state` changes
   3. its parent re-renders
-
-
-
-
-
 
 ---
 
@@ -262,9 +315,9 @@ A component will re-render when...
 function App() {
   return (
     <div>
-      <Welcome person="Charlie"></Welcome>
-      <Welcome person="Jessica"></Welcome>
-      <Welcome person="Tonya"></Welcome>
+      <Welcome person="GIngo"></Welcome>
+      <Welcome person="gimgo"></Welcome>
+      <Welcome person="gimgo"></Welcome>
     </div>
   );
 }
@@ -277,15 +330,14 @@ function Welcome(props) {
 - Props passed by its parent
 
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
 
 ---
 
-# Internal State (UseState)
-
+# First hook today - Internal State (UseState)
+Used to maintain state, takes an initial value as an argument, returns a pair of the read-only state value and a mutator function.
 ```js
 function Welcome() {
-  const [name, setName] = useState("Alba");
+  const [name, setName] = useState("blablabla");
   return <h1>Welcome, {name}</h1>;
 }
 ```
@@ -298,6 +350,8 @@ Using together with spread operator
 setNames((oldNames) => [...oldNames, "Jim"]);
 ```
 Remember setState is asynchronous!
+
+Demo2 
 
 ---
 
@@ -334,8 +388,12 @@ export default function Counter() {
 ![](figures/react_batch.png)
 
 ---
+
 # Map arrays of data
----
+Given an array of data, we can use `map` to render a list of components.
+
+
+Demo3 
 
 
 
@@ -348,15 +406,51 @@ The `key` prop is used by React to speed up rendering.
  - This key needs to be *unique among siblings*.
  - This key should *usually* not be the index of the item (e.g. what if the order changes?)
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
 
 ---
+
 # UseEffect
+Used to perform an action on component load or state change, takes a callback function and an array of state dependencies as arguments.
+
+```js
+useEffect(() => {
+  console.log("Component loaded!");
+}, []);
+```
+If the array is empty, the callback function will only be called once when the component loads.
+
+Demo4
+
 
 ---
 
 # React Router
 
+- `BrowserRouter` wraps the entire app, and provides the `history` object to all components.
+- `MemoryRouter` same as `BrowserRouter`, but the path is hidden from the browser in memory.
+- `HashRouter`
+- `StaticRouter`
+- `NativeRouter`: React Navigation.
+
+```js
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Layout />}/>
+  </Routes>
+
+</BrowserRouter>
+```
+
 ---
 
-# React Devtools
+# What's Next?
+
+### State Management?
+
+- Using `useContext`
+- Using `sessionStorage` and `localStorage`
+- Third party ....
+
+### Optimization?
+
+- `useMemo` & `useCallback` ?
